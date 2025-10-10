@@ -1,0 +1,350 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .menu {
+    display: flex;
+    font-size: 1rem;
+    font-weight: 400; 
+}
+.logo {
+    display: inline-block;
+    padding: .5rem 0;
+    margin-left: 1rem;
+}
+.nav {
+   
+    display: flex;
+}
+.nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 1rem 2rem;
+    font-size: 1.5rem; 
+}
+.nav ul li a {   
+    text-decoration: none;
+    color: #202523;   
+}
+.nav a:hover {
+    color: #b03a07;
+    border-bottom: 2px solid #10dd73;
+}
+.nav ul {
+    position: relative;
+}
+.sub-menus{
+    display: none;
+}
+.nav ul li :hover.sub-menus{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 100%;
+}
+.sub-menus ul{
+    display: block;
+    margin: 10px;
+}
+.sub-menus ul li {
+    width: 10px;
+    padding: 10px;
+}
+
+
+
+    </style>
+</head>
+<body>
+           <div class="menu">
+                <div class="logo">
+                    <img src="logo.webp" alt="logo">
+                    <h1></h1>
+                </div>
+                <div class="nav">
+                    <ul>
+
+                        <li>
+                        <li><a href="#">home</a></li>
+                        <li><a href="#">all-course</a></li>
+                        <div class="sub-menus">
+                            <ul>
+                                <li><a href="#">courses</a></li>
+                                <li><a href="#">courses details</a></li>
+                            </ul>
+                        </div>
+                        <li><a href="#">pages</a></li>
+                        <div class="sub-menus">
+                            <ul>
+                                <li><a href="">about</a></li>
+                                <li><a href="">rigester</a></li>
+                                <li><a href="">login</a></li>
+                                <li><a href="">FAQ</a></li>
+                                <li><a href="">404 erroe</a></li>
+                                <li><a href="">after encroll</a></li>
+                                <li><a href="">instruct dashboard (curse list)</a></li>
+                                <li><a href="">instruct dashboard (perfomence)</a></li>
+                                <li><a href="">student</a></li>
+                                <li><a href="">reveiwes</a></li>
+                                <li><a href=""> course engement</a></li>
+                                <li><a href=""> trafic & convertion</a></li>
+                                <li><a href="">massege</a></li>
+                            </ul>
+                        </div>
+                        <li><a href="#">blog</a></li>
+                        <li><a href="#">contact</a></li>
+                        <li><a href="#">sing in</a></li>
+                        </li>
+                    </ul>
+                    <div class="btn">
+                        <button class="sing-up">sign up</button>
+                    </div>
+                </div>
+                </div>
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Dropdown Menu</title>
+  <link rel="stylesheet" href="/style.css">
+  <!-- <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      background-color: #f4f4f4;
+      padding: 10px 20px;
+    }
+
+    .nav {
+      flex-grow: 1;
+      margin-left: 30px;
+    }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+     
+    }
+
+    .nav ul li {
+      position: relative;
+      margin-right: 20px;
+    }
+
+    .nav ul li a {
+      text-decoration: none;
+      color: #202523;
+      font-size: 16px;
+      padding: 8px 12px;
+      display: block;
+    }
+
+    .nav ul li a:hover {
+      border-bottom: 2px solid #10dd73;
+    }
+
+    /* Main Submenu */
+    .sub-menus {
+      display: none;
+      position: absolute;
+      top: 95%;
+      left: 0;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      min-width: 150px;
+      z-index: 1000;
+      text-align: center;
+    }
+
+    .sub-menus ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+
+     
+    }
+
+    .sub-menus ul li {
+      position: relative;
+    }
+
+    .sub-menus ul li a {
+      padding: 8px 0px;
+      color: #333;
+    }
+
+    .sub-menus ul li a:hover {
+      background-color: #f2f2f2;
+    }
+
+    /* Nested submenu */
+    .sub-menus.sub {
+      left: 95%;
+      top:0;
+    }
+
+    /* Show submenus on hover */
+    .nav ul li:hover > .sub-menus {
+      display: block;
+    }
+
+    .sub-menus ul li:hover > .sub-menus.sub {
+      display: block;
+    }
+
+   
+
+  </style> -->
+</head>
+
+<body>
+
+  <div class="menu">
+    <div class="logo">
+      <img src="logo.webp" alt="Logo">
+    </div>
+    <div class="nav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li>
+          <a href="#">All Courses</a>
+          <div class="sub-menus">
+            <ul>
+              <li><a href="#">Courses</a></li>
+              <li><a href="#">Course Details</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="#">Pages</a>
+          <div class="sub-menus">
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Register</a></li>
+              <li><a href="#">Login</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">404 Error</a></li>
+              <li><a href="#">After Enroll</a></li>
+              <li><a href="#">Instructor Dashboard (Course List)</a></li>
+              <li><a href="#">Instructor Dashboard (Performance)</a></li>
+              <li><a href="#">Student</a></li>
+              <li><a href="#">Reviews</a></li>
+              <li><a href="#">Course Engagement</a></li>
+              <li><a href="#">Traffic & Conversion</a></li>
+              <li><a href="#">Message</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="#">Blog</a>
+          <div class="sub-menus">
+            <ul>
+              <li>
+                <a href="#">Blog</a>
+                <div class="sub-menus sub">
+                  <ul>
+                    <li><a href="#">Blog Default</a></li>
+                    <li><a href="#">Blog Left Sidebar</a></li>
+                    <li><a href="#">Blog Right Sidebar</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a href="#">Blog Details</a>
+                <div class="sub-menus sub">
+                  <ul>
+                    <li><a href="#">Blog Details Default</a></li>
+                    <li><a href="#">Blog Details Left Sidebar</a></li>
+                    <li><a href="#">Blog Details Right Sidebar</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Sign In</a></li>
+      </ul>
+      <!-- <div class="btn">
+        <button>Sign Up</button>
+      </div> -->
+      <!-- .logo img {
+      width: 50px;
+      height: auto;
+    } -->
+
+    </div>
+  </div>
+  <section class="another-con">
+    <div class="main-section">
+      <div class="edule">
+        <h2>All <span id="edule-span"> Courses </span>of Edule</h2>
+      </div>
+
+    </div>
+    <div class="all-courses-center">
+      <div class="course-cards">
+        <div class="development">
+          <h2>ui/ux desing</h2>
+        </div>
+        <div class="course-cards">
+          <div class="development">
+            <h2>developmentg</h2>
+
+          </div>
+          <div class="course-cards">
+            <div class="development">
+              <h2>data science</h2>
+
+            </div>
+            <div class="course-cards">
+              <div class="development">
+                <h2>busniness</h2>
+
+              </div>
+              <div class="course-cards">
+                <div class="development">
+                  <h2>financial</h2>
+                </div>
+                <div class="search-your-course">
+                  <div class="search-box">
+                    <input type="text" placeholder="search your course">
+                    <button>
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- <div class="course-cards">
+                                    <div class="development">
+                                        <h2>marketing</h2>
+                                    </div>
+                                </div>
+                                <div class="course-cards">
+                                    <div class="development">
+                                        <h2>Desing</h2>
+                                    </div>
+                                </div> -->
+              </div>
+  </section>
+</body>
+
+</html>
