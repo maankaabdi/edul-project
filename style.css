@@ -110,17 +110,12 @@ body {
 .menu {
     display: flex;
     align-items: center;
-    /* padding: 10px 20px; */
-}
-
-.nav {
-    /* margin-left: 9rem; */
 }
 
 .nav ul {
     list-style: none;
     display: flex;
-    /* align-items: center; */
+
 }
 
 .nav ul li {
@@ -1762,12 +1757,7 @@ textarea {
 
 
 /* responsive */
-/* @media(min-width:991px){
 
-    .navbar{
-        display: block !important;
-    }
-} */
 @media(max-width:580px){
     .head-links{
         display: none;
@@ -1780,6 +1770,7 @@ textarea {
        
     }
       .navbar{
+        /* display: none; */
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
@@ -1798,21 +1789,31 @@ textarea {
         margin: 0 1.8rem;
       }
       .nav ul li a{
+        /* display: none; */
         font-size: 1rem;
         margin: 1rem;
       }   
+      .btn{
+        display: none;
+      }
+      .navbar{
+        
+        display: '<i class="fa-solid fa-bars"></i>';
+      }
       .sub-menus{
         display: none;
       }
       .sub-menus ul li {
-        display: none;
+        display: block;
       }
       .sub-menus.sub a{
         display: none;
+       
       }
+      
     }
 
-@media (max-width: 580px) {
+@media (max-width: 680px) {
      
        .containar{
         width: 100%;
@@ -2216,4 +2217,45 @@ textarea {
 .sing-box{
     flex-direction: column;
 }
-}
+
+        i {
+            color: green;
+            font-size: 2rem;
+            border-radius: 50%;
+            max-height: 20px;
+            max-width: 20px;
+        }
+
+        .contact-form span {
+            color: #a40f0f;
+            font-size: 12px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .register-form {
+            display: none;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1000;
+            margin-top: 20px;
+        }
+
+        .register-form:hover {
+            display: block;
+        }
+        .register-form{
+            position: fixed;
+            top: 5rem;
+            right: 20rem;
+            width: 480px;
+            height: 100vh;
+            z-index: 9999;
+        }
+        .sing-up{
+            padding: 1rem;
+        }
+ 
+    }

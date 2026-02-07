@@ -6,6 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sing</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        i {
+            color: green;
+            font-size: 2rem;
+            border-radius: 50%;
+            max-height: 20px;
+            max-width: 20px;
+        }
+
+        .register-form {
+            display: none;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1000;
+            margin-top: 20px;
+        }
+
+        .contact-form span {
+            color: #a40f0f;
+            font-size: 12px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .register-form:hover {
+            display: block;
+        }
+
+        .register-form {
+            position: fixed;
+            top: 5rem;
+            right: 20rem;
+            width: 480px;
+            height: 100vh;
+            z-index: 9999;
+        }
+
+        .sing-up {
+            padding: 1rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -95,28 +139,53 @@
                         <li><a href="singn.html">Sign In</a></li>
                     </ul>
                     <div class="btn">
-                        <button class="sing-up">sign up</button>
+                        <button type="submit" class="sing-up" onclick="return openRegister()">
+                            Sign Up
+                        </button>
+                        <div class="contact-form  register-form ">
+                            <h2> Registration <span>Now</span></h2>
+                            <form>
+                                <input type="text" placeholder="Name" id="name" onkeyup=" validateName()">
+                                <span id="errorName"></span>
+                                <input type="text" placeholder="Email" id="email" onkeyup=" validateEmail()">
+                                <span id="errorEmail"></span>
+                                <input type="text" placeholder="possword" id="password" onkeyup="validatePassword()">
+                                <span id="errorPassword"></span>
+                                <input type="text" placeholder="confirm password" id="conpassword"
+                                    onkeyup="validateConpassword()">
+                                <span id="errorConfig"></span>
+                                <button type="submit" class="send" id="creat" onclick="return validatecreat()">creat
+                                    an
+                                    account</button>
+                                <span id="errorCreat"></span>
+                                <button type="submit" class="log-with" id="login-with">sing up with
+                                    Google</button>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hero-image">
-            <div class="imge-po">
-                <div class="left-para">
-                    <img src="/aseet/left-mge.webp" alt="" class="left-imge">
-                    <p>home// <span>Login</span></p>
-                    <p>Login <span>form</span></p>
-                    <img src="/aseet/course-bottom.webp" alt="" class="stright-line">
-                </div>
-            </div>
-            <div class="right-image">
-                <img src="/aseet/no bchr.png" alt="cer-course" id="certificate">
-                <img src="/aseet/ki ka sareayy labtopka.webp" alt="" id="sare">
-                <img src="/aseet/orange.jpg" alt="" id="ornge-imge">
-                <img src="/aseet/s2.webp" alt="" id="malisa-image">
-                <img src="/aseet/right-course.webp" alt="" id="two-arrows">
+    </div>
+    </div>
+    <div class="hero-image">
+        <div class="imge-po">
+            <div class="left-para">
+                <img src="/aseet/left-mge.webp" alt="" class="left-imge">
+                <p>home// <span>Login</span></p>
+                <p>Login <span>form</span></p>
+                <img src="/aseet/course-bottom.webp" alt="" class="stright-line">
             </div>
         </div>
+        <div class="right-image">
+            <img src="/aseet/no bchr.png" alt="cer-course" id="certificate">
+            <img src="/aseet/ki ka sareayy labtopka.webp" alt="" id="sare">
+            <img src="/aseet/orange.jpg" alt="" id="ornge-imge">
+            <img src="/aseet/s2.webp" alt="" id="malisa-image">
+            <img src="/aseet/right-course.webp" alt="" id="two-arrows">
+        </div>
+    </div>
     </div>
     <div class="another-con">
         <div class="box-contect">
@@ -132,16 +201,21 @@
                     <div class="contact-form  sing-now">
                         <h2> Login <span>Now</span></h2>
                         <form>
-                            <input type="text"  placeholder="username or Email" >
-                            <input type="email"  placeholder="password">
-                               <button type="submit" class="send">Login</button>
-                                 <button type="submit" class="log-with">Login with Google</button>
-                            </form>
+                            <input type="text" id="emailSing" placeholder=" Email" onkeyup="validateEmailSing()">
+                            <span id="errorEmailSing"></span>
+                            <input type="password" id="passwordsing" placeholder="password"
+                                onkeyup=" validatepasswordsing()">
+                            <span id="errorPasswordSing"></span>
+                            <button type="submit" class="send" id="login"
+                                onclick=" return validateFormSing()">Login</button>
+                            <span id="errorLoginSing"></span>
+                            <button type="button" class="log-with" id="login-with-gogle">Login with Google</button>
+                        </form>
                     </div>
             </section>
         </div>
     </div>
-   
+
     <section>
         <div class="read-to-start">
             <div class="read-text">
@@ -209,6 +283,155 @@
             </div>
         </footer>
     </div>
+    <script>
+        function validateName() {
+            let name = document.getElementById("name").value;
+            let errorName = document.getElementById("errorName");
+
+            if (name.length === 0) {
+                errorName.innerHTML = "Name is required";
+                return false;
+            }
+
+            errorName.innerHTML = '<i class="fa-solid fa-check"></i>';
+            return true;
+        }
+
+        function validateEmail() {
+            let email = document.getElementById("email").value;
+            let errorEmail = document.getElementById("errorEmail");
+
+            if (email.length === 0) {
+                errorEmail.innerHTML = "Email is required";
+                return false;
+            }
+
+            if (!email.match(/^[A-Za-z0-9._-]+@[A-Za-z]+\.[a-z]{2,6}$/)) {
+                errorEmail.innerHTML = "Enter valid email";
+                return false;
+            }
+
+            errorEmail.innerHTML = '<i class="fa-solid fa-check"></i>';
+            return true;
+        }
+
+        function validatePassword() {
+            let password = document.getElementById("password").value;
+            let errorPassword = document.getElementById("errorPassword");
+
+            if (password.length === 0) {
+                errorPassword.innerHTML = "Password is required";
+                return false;
+            }
+
+            if (!password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/)) {
+                errorPassword.innerHTML = "Password must be at least 6 characters and include numbers";
+                return false;
+            }
+
+            errorPassword.innerHTML = '<i class="fa-solid fa-check"></i>';
+            return true;
+        }
+
+        function validateConpassword() {
+            let password = document.getElementById("password").value;
+            let conpassword = document.getElementById("conpassword").value;
+            let errorConfig = document.getElementById("errorConfig");
+
+            if (conpassword.length === 0) {
+                errorConfig.innerHTML = "Confirm password required";
+                return false;
+            }
+
+            if (password !== conpassword) {
+                errorConfig.innerHTML = "Passwords do not match";
+                return false;
+            }
+
+            errorConfig.innerHTML = '<i class="fa-solid fa-check"></i>';
+            return true;
+        }
+        function validatecreat() {
+            let errorCreat = document.getElementById("errorCreat");
+            if (!validateName() || !validateEmail() || !validatePassword() || !validateConpassword()) {
+                errorCreat.style.display = "block"
+                errorCreat.innerHTML = "please fixed error"
+                setTimeout(function () { errorCreat.style.display = "block" }, 3000)
+                return false
+            }
+        }
+
+        let loginwith = document.getElementById("login-with-gogle").addEventListener("click", function (e) {
+            alert("Account created successfully!")
+
+        })
+
+
+
+        document.getElementById("nav-signup").addEventListener("click", function () {
+            const registerForm = document.getElementById("register");
+
+            if (registerForm.style.display === "none") {
+                registerForm.style.display = "block";
+                registerForm.scrollIntoView({ behavior: "smooth" });
+            } else {
+                registerForm.style.display = "none";
+            }
+        });
+
+        function openRegister() {
+            document.querySelector('.register-form').style.display = "block";
+        }
+
+        //    sing in
+
+
+        function validateEmailSing() {
+            let emailSing = document.getElementById("emailSing").value
+            let errorEmailSing = document.getElementById("errorEmailSing")
+            if (emailSing.length == 0) {
+                errorEmailSing.innerHTML = "emailSing is reqiured"
+                return false
+            }
+            if (!emailSing.match(/^[A-za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)) {
+                errorEmailSing.innerHTML = "enter valid email"
+                return false
+            }
+            errorEmailSing.innerHTML = '<i class="fa-solid fa-check"></i>'
+            return true
+        }
+        function validatepasswordsing() {
+            let passwordsing = document.getElementById("passwordsing").value;
+            let errorPasswordSing = document.getElementById("errorPasswordSing");
+
+            if (passwordsing.length === 0) {
+                errorPasswordSing.innerHTML = "Password is required";
+                return false;
+            }
+
+            if (!passwordsing.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/)) {
+                errorPasswordSing.innerHTML = "please full password" ;
+                return false;
+            }
+
+            errorPasswordSing.innerHTML = '<i class="fa-solid fa-check"></i>';
+            return true;
+        }
+        function validateFormSing() {
+            if (!validateEmailSing() || !validatepasswordsing()) {
+                errorLoginSing.style.display = "block"
+                errorLoginSing.innerHTML = "please fixed error"
+                setTimeout(function () { errorLoginSing.style.display = "none" }, 3000)
+                return false
+            }
+        }
+
+        let loginwithsing = document.getElementById("login-with").addEventListener("click", function (e) {
+            alert("Account created successfully!")
+
+        })
+
+    </script>
 </body>
 
 </html>

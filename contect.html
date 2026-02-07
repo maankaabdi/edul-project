@@ -6,6 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>contect</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        select {
+            position: relative;
+        }
+
+        contact-form {
+            color: #061506;
+        }
+
+        .input-field {
+            width: 70%;
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            margin-bottom: 6px;
+            text-transform: capitalize;
+            color: rgb(99, 95, 95);
+            background-color: #fff;
+            margin-left: 1rem;
+            box-shadow: 1px 1px 1px 1px rgb(234, 226, 226);
+        }
+
+        i {
+            color: green;
+            font-size: 2rem;
+            border-radius: 50%;
+            max-height: 20px;
+            max-width: 20px;
+
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .contact-form span {
+            color: #a40f0f;
+            font-size: 12px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .register-form {
+            display: none;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1000;
+            margin-top: 20px;
+        }
+
+        .register-form:hover {
+            display: block;
+        }
+
+        .register-form {
+            position: fixed;
+            top: 5rem;
+            right: 20rem;
+            width: 480px;
+            height: 100vh;
+            z-index: 9999;
+        }
+
+        .sing-up {
+            padding: 1rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -96,11 +168,32 @@
                         <li><a href="singn.html">Sign In</a></li>
                     </ul>
                     <div class="btn">
-                        <button class="sing-up">sign up</button>
+                        <button type="button" class="sing-up" onclick="openRegister()">
+                            Sign Up
+                        </button>
+                        <div class="contact-form  register-form ">
+                            <h2> Registration <span>Now</span></h2>
+                            <form>
+                                <input type="text" placeholder="Name" id="name" onkeyup=" validateName()">
+                                <span id="errorName"></span>
+                                <input type="text" placeholder="Email" id="email" onkeyup=" validateEmail()">
+                                <span id="errorEmail"></span>
+                                <input type="text" placeholder="possword" id="password" onkeyup="validatePassword()">
+                                <span id="errorPassword"></span>
+                                <input type="text" placeholder="confirm password" id="conpassword"
+                                    onkeyup="validateConpassword()">
+                                <span id="errorConfig"></span>
+                                <button type="submit" class="send" id="creat" onclick="return validatecreat()">creat an
+                                    account</button>
+                                <span id="errorCreat"></span>
+                                <button type="submit" class="log-with" id="login-with-gogle">sing up with
+                                    Google</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
         <div class="hero-image">
             <div class="imge-po">
                 <div class="left-para">
@@ -154,12 +247,24 @@
                 <div class="contact-form">
                     <h2>Get in Touch <span>With Us</span></h2>
                     <form>
-                        <input type="text" placeholder="Name">
-                        <input type="email" placeholder="Email">
-                        <input type="text" placeholder="Subject">
-                        <textarea placeholder="massegae"></textarea>
-                        <button type="submit" class="send">Send Message</button>
+                        <input type="text" placeholder="Name" id="contec-name" onkeyup="validateNameCon()">
+                        <span id="errorNameCon"></span>
+                        <input type="email" placeholder="Email" id="email-contect" onkeyup=" validateEmailCon()">
+                        <span id="errorEmailCon"></span>
+                        <select id="subject" onchange="validateSubject()" class="input-field">
+                            <option value="">Choose Subject</option>
+                            <option value="python">Python</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="java">Java</option>
+                        </select>
+                        <span id="errorSubject"></span>
+                        <textarea placeholder="massegae" id="massage-contect" onkeyup="validateMassage ()"></textarea>
+                        <span id="errorMassage"></span>
+                        <button type="submit" class="send" onclick="return validateForm()">
+                            Send Message
+                        </button>
 
+                        <span id="submitError"></span>
                     </form>
                 </div>
             </section>
@@ -232,6 +337,193 @@
             </div>
         </footer>
     </div>
+
+
+    <script>
+        let name = document.getElementById("contec-name")
+        let email = document.getElementById("email-contect")
+        let subject = document.getElementById("subject")
+        let massage = document.getElementById("massage-contect")
+        let submitError = document.getElementById("submitError")
+
+
+        function validateNameCon() {
+            let name = document.getElementById("contec-name").value
+            let errorNameCon = document.getElementById("errorNameCon")
+            if (name == 0) {
+                errorNameCon.innerHTML = "requir name"
+                return false
+            }
+            if (!name.match(/^[A-Za-z]+(\s[A-Za-z]+)+$/)) {
+                errorNameCon.innerHTML = "full Name"
+                return false
+            }
+
+            errorNameCon.innerHTML = '<i class="fa-solid fa-check"></i>'
+            return true
+        }
+
+        function validateEmailCon() {
+            let email = document.getElementById("email-contect").value
+            let errorEmailCon = document.getElementById("errorEmailCon")
+            if (email == 0) {
+                errorEmailCon.innerHTML = "email is requir"
+                return false
+            }
+            if (!email.match(/^[A-Za-z\._\-[0-9]*[@][A-za-z]*[\.][a-z]{2,4}$/)) {
+                errorEmailCon.innerHTML = "enter valid email"
+                return false
+            }
+            errorEmailCon.innerHTML = '<i class="fa-solid fa-check"></i>'
+            return true
+        }
+        function validateMassage() {
+            let massage = document.getElementById("massage-contect").value
+            let errorMassage = document.getElementById("errorMassage")
+            if (massage == "") {
+                errorMassage.innerHTML = "requir masaage"
+                return false
+
+            }
+            errorMassage.innerHTML = '<i class="fa-solid fa-check"></i>'
+            return true
+        }
+        function validateSubject() {
+            let subject = document.getElementById("subject").value
+            let errorSubject = document.getElementById("errorSubject")
+
+            if (subject === "") {
+                errorSubject.innerHTML = "please choose subject"
+                return false
+            }
+
+            errorSubject.innerHTML = '<i class="fa-solid fa-check"></i>'
+            return true
+        }
+
+        function validateForm() {
+            if (!validateEmailCon() || !validateNameCon() || !validateSubject() || !validateMassage()) {
+                submitError.style.display = "block"
+                submitError.innerHTML = "please fixed error"
+                setTimeout(function () { submitError.style.display = "none" }, 3000)
+                return false
+            }
+        }
+        document.getElementById("nav-signup").addEventListener("click", function () {
+            const registerForm = document.getElementById("register");
+
+            if (registerForm.style.display === "none") {
+                registerForm.style.display = "block";
+                registerForm.scrollIntoView({ behavior: "smooth" });
+            } else {
+                registerForm.style.display = "none";
+            }
+        });
+        // sing up
+
+
+        function validateName() {
+            let name = document.getElementById("name").value;
+            let errorName = document.getElementById("errorName");
+
+            if (name.length === 0) {
+                errorName.innerHTML = "Name is required";
+                return false;
+            }
+
+            errorName.innerHTML = '<i class="fa-solid fa-check"></i>';
+            return true;
+        }
+
+        function validateEmail() {
+            let email = document.getElementById("email").value;
+            let errorEmail = document.getElementById("errorEmail");
+
+            if (email.length === 0) {
+                errorEmail.innerHTML = "Email is required";
+                return false;
+            }
+
+            if (!email.match(/^[A-Za-z0-9._-]+@[A-Za-z]+\.[a-z]{2,6}$/)) {
+                errorEmail.innerHTML = "Enter valid email";
+                return false;
+            }
+
+            errorEmail.innerHTML = '<i class="fa-solid fa-check"></i>';
+            return true;
+        }
+
+        function validatePassword() {
+            let password = document.getElementById("password").value;
+            let errorPassword = document.getElementById("errorPassword");
+
+            if (password.length === 0) {
+                errorPassword.innerHTML = "Password is required";
+                return false;
+            }
+
+            if (!password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/)) {
+                errorPassword.innerHTML = "Password must be at least 6 characters and include numbers";
+                return false;
+            }
+
+            errorPassword.innerHTML = '<i class="fa-solid fa-check"></i>';
+            return true;
+        }
+
+        function validateConpassword() {
+            let password = document.getElementById("password").value;
+            let conpassword = document.getElementById("conpassword").value;
+            let errorConfig = document.getElementById("errorConfig");
+
+            if (conpassword.length === 0) {
+                errorConfig.innerHTML = "Confirm password required";
+                return false;
+            }
+
+            if (password !== conpassword) {
+                errorConfig.innerHTML = "Passwords do not match";
+                return false;
+            }
+
+            errorConfig.innerHTML = '<i class="fa-solid fa-check"></i>';
+            return true;
+        }
+        function validatecreat() {
+            let errorCreat = document.getElementById("errorCreat");
+            if (!validateName() || !validateEmail() || !validatePassword() || !validateConpassword()) {
+                errorCreat.style.display = "block"
+                errorCreat.innerHTML = "please fixed error"
+                setTimeout(function () { errorCreat.style.display = "block" }, 3000)
+                return false
+            }
+        }
+        let loginwith = document.getElementById("login-with-gogle").addEventListener("click", function (e) {
+            alert("Account created successfully!")
+
+        })
+
+        document.getElementById("nav-signup").addEventListener("click", function () {
+            const registerForm = document.getElementById("register");
+
+            if (registerForm.style.display === "none") {
+                registerForm.style.display = "block";
+                registerForm.scrollIntoView({ behavior: "smooth" });
+            } else {
+                registerForm.style.display = "none";
+            }
+        });
+
+        function openRegister() {
+            document.querySelector('.register-form').style.display = "block";
+        }
+
+
+
+
+
+    </script>
+
 </body>
 
 </html>
