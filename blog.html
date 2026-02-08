@@ -140,10 +140,10 @@
                         <li><a href="singn.html">Sign In</a></li>
                     </ul>
                     <div class="btn">
-                        <button type="button" class="sing-up" onclick="openRegister()">
+                          <button type="submit" id="sing-up"   class="sing-up">
                             Sign Up
                         </button>
-                        <div class="contact-form  register-form ">
+                        <div class="contact-form  register-form " id="register">
                             <h2> Registration <span>Now</span></h2>
                             <form>
                                 <input type="text" placeholder="Name" id="name" onkeyup=" validateName()">
@@ -506,7 +506,7 @@
 
 
 
-        document.getElementById("nav-signup").addEventListener("click", function () {
+         document.getElementById("sing-up").addEventListener("click", function () {
             const registerForm = document.getElementById("register");
 
             if (registerForm.style.display === "none") {
@@ -516,9 +516,8 @@
                 registerForm.style.display = "none";
             }
         });
-
         function openRegister() {
-            document.querySelector('.register-form').style.display = "block";
+            document.getElementById('register').style.display = "block";
         }
 
 
