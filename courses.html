@@ -402,7 +402,10 @@
                 errorName.innerHTML = "Name is required";
                 return false;
             }
-
+            if (!name.match(/^[A-Za-z]+(\s[A-Za-z]+)+$/)) {
+                errorNameCon.innerHTML = "full Name"
+                return false
+            }
             errorName.innerHTML = '<i class="fa-solid fa-check"></i>';
             return true;
         }

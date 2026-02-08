@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
     <style>
-         i {
+        i {
             color: green;
             font-size: 2rem;
             border-radius: 50%;
             max-height: 20px;
             max-width: 20px;
         }
+
         .register-form {
             display: none;
             padding: 20px;
@@ -141,7 +142,7 @@
                         <li><a href="singn.html">Sign In</a></li>
                     </ul>
                     <div class="btn">
-                        <button type="submit" id="sing-up"   class="sing-up">
+                        <button type="submit" id="sing-up" class="sing-up">
                             Sign Up
                         </button>
                         <div class="contact-form  register-form  " id="register">
@@ -613,7 +614,7 @@
             </div>
         </footer>
     </div>
-</div>
+    </div>
 </body>
 <script>
     function validateName() {
@@ -624,7 +625,10 @@
             errorName.innerHTML = "Name is required";
             return false;
         }
-
+        if (!name.match(/^[A-Za-z]+(\s[A-Za-z]+)+$/)) {
+            errorNameCon.innerHTML = "full Name"
+            return false
+        }
         errorName.innerHTML = '<i class="fa-solid fa-check"></i>';
         return true;
     }
@@ -698,6 +702,7 @@
 
     })
 
+
     document.getElementById("sing-up").addEventListener("click", function () {
         const registerForm = document.getElementById("register");
 
@@ -713,4 +718,5 @@
         document.getElementById('register').style.display = "block";
     }
 </script>
+
 </html>

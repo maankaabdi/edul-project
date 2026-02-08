@@ -139,7 +139,7 @@
                         <li><a href="singn.html">Sign In</a></li>
                     </ul>
                     <div class="btn">
-                       <button type="submit" id="sing-up"   class="sing-up">
+                        <button type="submit" id="sing-up" class="sing-up">
                             Sign Up
                         </button>
                         <div class="contact-form  register-form " id="register">
@@ -292,7 +292,10 @@
                 errorName.innerHTML = "Name is required";
                 return false;
             }
-
+            if (!name.match(/^[A-Za-z]+(\s[A-Za-z]+)+$/)) {
+                errorNameCon.innerHTML = "full Name"
+                return false
+            }
             errorName.innerHTML = '<i class="fa-solid fa-check"></i>';
             return true;
         }
@@ -379,7 +382,7 @@
             }
         });
 
-         function openRegister() {
+        function openRegister() {
             document.getElementById('register').style.display = "block";
         }
 
@@ -410,7 +413,7 @@
             }
 
             if (!passwordsing.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/)) {
-                errorPasswordSing.innerHTML = "please full password" ;
+                errorPasswordSing.innerHTML = "please full password";
                 return false;
             }
 
