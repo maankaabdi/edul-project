@@ -166,9 +166,10 @@
                         </li>
                         <li><a href="contect.html">Contact</a></li>
                         <li><a href="singn.html">Sign In</a></li>
+                        <li><a href="dashboard.html"> dashboard</a></li>
                     </ul>
                     <div class="btn">
-                          <button type="submit" id="sing-up"  class="sing-up" onclick="openRegister()">
+                        <button type="button" id="sing-up" class="sing-up" onclick="openRegister()">
                             Sign Up
                         </button>
                         <div class="contact-form  register-form " id="register">
@@ -408,7 +409,7 @@
                 return false
             }
         }
-        document.getElementById("nav-signup").addEventListener("click", function () {
+        document.getElementById("sing-up").addEventListener("click", function () {
             const registerForm = document.getElementById("register");
 
             if (registerForm.style.display === "none") {
@@ -517,7 +518,34 @@
             document.getElementById('register').style.display = "block";
         }
 
+        console.log("Saving user...");
+        
+        function validatecreat() {
+            let errorCreat = document.getElementById("errorCreat");
+            if (!validateName() || !validateEmail() || !validatePassword() || !validateConpassword()) {
+                errorCreat.style.display = "block"
+                errorCreat.innerHTML = "Please fix errors";
+                return false;
+            }
 
+ 
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            let user = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value,
+                date: new Date().toLocaleString()
+            };
+            users.push(user);
+            localStorage.setItem("users", JSON.stringify(users));
+
+            console.log("Users saved:", users);
+            alert("Account Created Successfully ✅");
+
+           
+            window.location.href = "dashboard.html";
+            return false;
+        }
 
 
     </script>

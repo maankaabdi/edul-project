@@ -140,6 +140,7 @@
                         </li>
                         <li><a href="contect.html">Contact</a></li>
                         <li><a href="singn.html">Sign In</a></li>
+                        <li><a href="dashboard.html"> dashboard</a></li>
                     </ul>
                     <div class="btn">
                         <button type="submit" id="sing-up" class="sing-up">
@@ -695,7 +696,18 @@
             setTimeout(function () { errorCreat.style.display = "block" }, 3000)
             return false
         }
+        let userData = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value
+        };
+
+        localStorage.setItem("userAccount", JSON.stringify(userData));
+
+        alert("Account created & saved successfully!");
+        return true;
     }
+
 
     let loginwith = document.getElementById("login-with-gogle").addEventListener("click", function (e) {
         alert("Account created successfully!")
@@ -717,6 +729,7 @@
     function openRegister() {
         document.getElementById('register').style.display = "block";
     }
+
 </script>
 
 </html>

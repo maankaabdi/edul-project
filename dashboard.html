@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body{font-family:Arial;padding:30px;background:#f4f4f4}
+        h2{text-align:center}
+        table{width:100%;border-collapse:collapse;background:white}
+        th,td{border:1px solid #ddd;padding:10px;text-align:center}
+        th{background:#4CAF50;color:white}
+        button{padding:5px 10px;background:red;color:white;border:none;cursor:pointer}
+        .top{margin-bottom:20px;text-align:right}
+    </style>
+</head>
+<body>
+
+<h2>Registered Users Dashboard</h2>
+
+<div class="top">
+    <button onclick="clearAll()">Clear All</button>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="userTable"></tbody>
+</table>
+
+<script>
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let table = document.getElementById("userTable");
+
+function loadUsers(){
+    table.innerHTML = "";
+
+    if(users.length === 0){
+        table.innerHTML = "<tr><td colspan='5'>No Registered Users</td></tr>";
+    }
+
+    users.forEach((user,index)=>{
+        table.innerHTML += `
+            <tr>
+                <td>${index+1}</td>
+                <td>${user.name}</td>
+                <td>${user.email}</td>
+                <td>${user.date}</td>
+                <td><button onclick="deleteUser(${index})">Delete</button></td>
+            </tr>
+        `;
+    });
+}
+
+function deleteUser(index){
+    users.splice(index,1);
+    localStorage.setItem("users",JSON.stringify(users));
+    loadUsers();
+}
+
+function clearAll(){
+    localStorage.removeItem("users");
+    users = [];
+    loadUsers();
+}
+
+loadUsers();
+console.log(JSON.parse(localStorage.getItem("users")));
+
+</script>
+
+</body>
+</html>
